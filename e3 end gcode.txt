@@ -1,0 +1,19 @@
+;{if layer_z < max_print_height}G1 Z{z_offset+min(layer_z+10, max_print_height)} F600{endif} ; Move print head up
+G90;
+G1 X0Y200 F4800; Move X Y for tool change
+T[current_extruder]; Select Old Tool
+G92 E0; Zero Extruder
+G91; Relative Coordinates
+G1 E-15 F3600; Fast Retract 15mm
+G4 P600
+G1 E13 F3600; Fast Reinsert 13mm
+G4 P1000; Pause 1secs
+G1 E-13 F3600; Fast Reinsert 13mm
+G4 P1000; Pause 1secs
+G1 E-90 F3600; Fast long retract 548+2mm
+G90;
+M104 S0 ; turn off temperature
+M140 S0 ; turn off heatbed
+M107 ; turn off fan
+G1 X0 Y200 F3000 ; present print
+M84 X Y E ; disable motors

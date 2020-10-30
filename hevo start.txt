@@ -1,0 +1,6 @@
+G28 ; home all axes
+G1 Z10. F5000 ; lift nozzle
+G29;
+M420 Z10; leveling fade height
+M900 K0.0; LINEAR ADVANCE OFF
+M200 D0; VOLUMETRIC E
